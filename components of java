@@ -1,0 +1,154 @@
+INHERITENCE  :
+
+
+package vehicle;
+
+public class vehicle {
+	
+	String color;                                     ///////THIS IS PARENT CLASS
+	int maxSpeed;	
+	public vehicle()
+  {
+		System.out.println("vehicle constructor");
+	}
+    public void print()                           //////THIS IS PRINT FUNCTION
+    {
+    	System.out.println(color +" : "+maxSpeed);
+    }
+}
+
+//////THIS IS CHILD CLASS...WHICH INHERITS THE PROPERTIES OF PARENT CLASS USING EXTEND KEYWORD
+///////CAR IS CHILD OF VEHICLE
+package vehicle;
+
+public class car extends vehicle{
+	int numGears;
+	
+	public car() {
+		System.out.println("car constructor");
+	}
+
+}
+
+//////THIS IS PRINTING......
+
+package vehicle;            
+
+public class vehicleUse {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		vehicle v=new vehicle();
+		v.color="Black";
+		v.maxSpeed=100;
+		v.print();
+
+		
+		car c=new car();
+		c.color="Red";
+		c.maxSpeed=140;
+		c.numGears=8;
+		c.print();
+  }
+}
+
+  O/P:
+vehicle constructor
+Black : 100
+vehicle constructor
+car constructor
+Red : 140
+
+
+
+
+  WHEN THERE IS PRINT FUNCTION IN BOTH CHILD AND PARENT CLASS...THEN IN CHILD CLASS IT WILLONLY PRINT
+THE STATEMENTS IN CKHILD CLASS PRINT... SO THIS IS CALLED AS OVVERRIDE.....
+  TO AVOID THIS WE USE SUPER KEYWORD.......
+
+
+  ///////we use parameterised constructor 
+  package vehicle;
+
+public class vehicle {
+	String color;
+	int maxSpeed;
+
+	public vehicle(int maxSpeed) {
+		this.maxSpeed=maxSpeed;
+	}
+    public void print()
+    {
+    	System.out.println(color +" : "+maxSpeed);
+    }
+}
+
+\\\\\\\\ THIS IS CHLID CLASS USING SUPER KEYWORD
+package vehicle;
+
+public class car extends vehicle{
+	int numGears;
+		public car(int maxSpeed)
+		{
+			super(maxSpeed);
+		}
+	public void carprint()
+	{		
+		System.out.println("Number of gears in car : "+numGears);
+	}
+}
+
+\\\\\\\VEHICLE USE PROGRAM TO PRINT
+package vehicle;
+
+public class vehicleUse {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		vehicle v=new vehicle(40);
+		v.color="Black";
+		v.print();
+
+		car c=new car(200);
+		c.color="Red";
+		c.numGears=8;
+		c.print();
+		c.carprint();
+}
+}
+
+O/P: 
+Black : 40
+Red : 200
+Number of gears in car : 8
+
+EXCESS MODIFIERS  :
+      PUBLIC
+      PRIVATE
+      PROTECTED
+
+OVERLOADING METHOD  :  METHOD NAME IS SAME BUT PARAMETERS ARE DIFFERENT
+
+POLYMERHISM : IT IS IMPORTANT FEATURE OF OOPS THAT ALLOW US TO PERFORM ONE SINGLE ACTION IN DIFFERENT Ways
+2 TYPES: 
+      1. COMPILE TIME/STATIC  :ACHIEVED BY  FUNCTION OVERLOADING
+      2.RUNTIME POLYMERPHISM /DYNAMIC : ACHIEVED BY OVERRIDING
+
+  //////////COMPILE TIME 
+\\\\\\\\\\OVERLOADING FUNCTION
+  class multiply()
+{
+    static int multiply(int a ,int b)
+  {
+    return a*b;
+  }
+  static int multiply(int a,int b,int c)
+  {
+    return a*b*c;
+  }
+} 
+
+///////RUNTIME POLYMORPHISM
+used overriding method as used before by using same print function for vehicle and overrides occurs in child class
